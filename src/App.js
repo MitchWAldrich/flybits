@@ -22,22 +22,24 @@ const onLoad = marker => {
 
 const branches = [
   {
+    id: 1,
     name: "Branch One",
     lat: 43.689,
     lng: -79.474
   }, 
   {
+    id: 2,
     name: "Branch Two",
     lat: 43.72,
     lng: -79.494
   },
   {
+    id: 3,
     name: "Branch Three",
     lat: 43.684,
     lng: -79.576
   }
 ]
-console.log('b', branches)
 
 function App() {
   const [state, setState] = useState({
@@ -45,12 +47,19 @@ function App() {
   })
 
   const onSubmit = (name, latitude, longitude) => {
-    console.log("It worked");
     branches.push({name, lat: Number(latitude), lng: Number(longitude)});
-    console.log('b3', branches);
-    console.log('state', state)
     setState(branches);
-    console.log('b2', state.branches);
+  }
+
+  const onDelete = (branchID) => {
+
+    for (let i = 0; i < branches.length; i++) {
+      if (branches[i].id === branchID) {
+        branches.splice(i, 1);
+        setState(branches);
+      }
+    }    
+
   }
 
   const markers = branches.map(marker => 
@@ -64,7 +73,9 @@ function App() {
     <main>
       <section>
         <BranchList
-          branches={branches}/>
+          branches={branches}
+          onDelete={onDelete}
+        />
         <Button
           text="Create"
           type="submit"
