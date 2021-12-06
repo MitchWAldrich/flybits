@@ -7,15 +7,18 @@ export default function Create(props) {
   const [name, setName] = useState("");
   const [latitude, setLatitude] = useState("");
   const [longitude, setLongitude] = useState("");
+  const [promoOffer, setPromoOffer] = useState("");
+  const [promoPhoto, setPromoPhoto] = useState("");
 
   const handleSubmit = event => {
     event.preventDefault();
-    onSubmit(name, latitude, longitude)
+    onSubmit(name, latitude, longitude, promoOffer, promoPhoto);
     console.log('submitted')
   }
 
   return (
     <main>
+      <h2>New Branch</h2>
     <form autoComplete="off" onSubmit={handleSubmit}>
       <input
         name="name"
@@ -40,6 +43,20 @@ export default function Create(props) {
         value={longitude}
         onChange={(event) => setLongitude(event.target.value)}
       />
+       <input
+          name="offer"
+          type="text"
+          placeholder="Enter Offer (if applicable)"
+          value={promoOffer}
+          onChange={(event) => setPromoOffer(event.target.value)}
+        />
+        <input
+          name="photo"
+          type="text"
+          placeholder="Enter Photo (if applicable)"
+          value={promoPhoto}
+          onChange={(event) => setPromoPhoto(event.target.value)}
+        />
       <Button
       text="Submit"
       // onClick={onSubmit(name, latitude, longitude)}
