@@ -39,13 +39,6 @@ const branches = [
 ]
 console.log('b', branches)
 
-const markers = branches.map(marker => 
-  <Marker
-      onLoad={onLoad}
-      position={marker}
-    />
-)
-
 function App() {
   const [state, setState] = useState({
     branches: branches
@@ -53,12 +46,19 @@ function App() {
 
   const onSubmit = (name, latitude, longitude) => {
     console.log("It worked");
-    branches.push({name, latitude, longitude});
+    branches.push({name, lat: Number(latitude), lng: Number(longitude)});
     console.log('b3', branches);
     console.log('state', state)
     setState(branches);
     console.log('b2', state.branches);
   }
+
+  const markers = branches.map(marker => 
+    <Marker
+        onLoad={onLoad}
+        position={marker}
+      />
+  )
 
   return (
     <main>

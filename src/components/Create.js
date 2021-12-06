@@ -27,6 +27,7 @@ export default function Create(props) {
       <input
         name="latitude"
         type="number"
+        step="0.001"
         placeholder="Enter Latitude"
         value={latitude}
         onChange={(event) => setLatitude(event.target.value)}
@@ -34,6 +35,7 @@ export default function Create(props) {
       <input
         name="longitude"
         type="number"
+        step="0.001"
         placeholder="Enter Longitude"
         value={longitude}
         onChange={(event) => setLongitude(event.target.value)}
