@@ -1,8 +1,10 @@
-import logo from './logo.svg';
 import './App.css';
-import React from 'react';
+import React, { useState } from 'react';
 import { GoogleMap, LoadScript,useJsApiLoader, Marker } from '@react-google-maps/api';
-// const ScriptLoaded = require("../../docs/ScriptLoaded").default;
+
+import BranchList from './components/BranchList';
+import Button from './components/Button';
+import Create from './components/Create';
 
 const containerStyle = {
   width: '400px',
@@ -14,34 +16,28 @@ const center = {
   lng: -79.474
 };
 
-// const branchOne = {
-//   lat: 43.689,
-//   lng: -79.474
-// };
-
-// const branchTwo = {
-//   lat: 43.69,
-//   lng: -79.474
-// };
-
 const onLoad = marker => {
   console.log('marker: ', marker)
 }
 
 const branches = [
   {
+    name: "Branch One",
     lat: 43.689,
     lng: -79.474
   }, 
   {
+    name: "Branch Two",
     lat: 43.72,
     lng: -79.494
   },
   {
+    name: "Branch Three",
     lat: 43.684,
     lng: -79.576
   }
 ]
+console.log('b', branches)
 
 const markers = branches.map(marker => 
   <Marker
@@ -51,7 +47,33 @@ const markers = branches.map(marker =>
 )
 
 function App() {
+  const [state, setState] = useState({
+    branches: branches
+  })
+
+  const onSubmit = (name, latitude, longitude) => {
+    console.log("It worked");
+    branches.push({name, latitude, longitude});
+    console.log('b3', branches);
+    console.log('state', state)
+    setState(branches);
+    console.log('b2', state.branches);
+  }
+
   return (
+    <main>
+      <section>
+        <BranchList
+          branches={branches}/>
+        <Button
+          text="Create"
+          type="submit"
+        />
+        <Create
+          onSubmit={onSubmit}
+        />
+      </section> 
+      <section>
     <div className="App">
       <header className="App-header">
         <LoadScript
@@ -71,6 +93,8 @@ function App() {
     </LoadScript>
       </header>
     </div>
+    </section>
+    </main>
   );
 }
 
