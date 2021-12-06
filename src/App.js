@@ -14,19 +14,41 @@ const center = {
   lng: -79.474
 };
 
-const branchOne = {
-  lat: 43.689,
-  lng: -79.474
-};
+// const branchOne = {
+//   lat: 43.689,
+//   lng: -79.474
+// };
 
-const branchTwo = {
-  lat: 43.69,
-  lng: -79.474
-};
+// const branchTwo = {
+//   lat: 43.69,
+//   lng: -79.474
+// };
 
 const onLoad = marker => {
   console.log('marker: ', marker)
 }
+
+const branches = [
+  {
+    lat: 43.689,
+    lng: -79.474
+  }, 
+  {
+    lat: 43.72,
+    lng: -79.494
+  },
+  {
+    lat: 43.684,
+    lng: -79.576
+  }
+]
+
+const markers = branches.map(marker => 
+  <Marker
+      onLoad={onLoad}
+      position={marker}
+    />
+)
 
 function App() {
   return (
@@ -41,14 +63,8 @@ function App() {
         center={center}
         zoom={10}
       >
-        <Marker
-      onLoad={onLoad}
-      position={branchOne}
-    />
-    <Marker
-      onLoad={onLoad}
-      position={branchTwo}
-    />
+        {markers}
+       
         { /* Child components, such as markers, info windows, etc. */ }
         <></>
       </GoogleMap>
