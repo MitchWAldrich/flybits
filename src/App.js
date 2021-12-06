@@ -1,8 +1,10 @@
 import './App.css';
-import React from 'react';
+import React, { useState } from 'react';
 import { GoogleMap, LoadScript,useJsApiLoader, Marker } from '@react-google-maps/api';
 
 import BranchList from './components/BranchList';
+import Button from './components/Button';
+import Create from './components/Create';
 
 const containerStyle = {
   width: '400px',
@@ -35,6 +37,7 @@ const branches = [
     lng: -79.576
   }
 ]
+console.log('b', branches)
 
 const markers = branches.map(marker => 
   <Marker
@@ -44,11 +47,31 @@ const markers = branches.map(marker =>
 )
 
 function App() {
+  const [state, setState] = useState({
+    branches: branches
+  })
+
+  const onSubmit = (name, latitude, longitude) => {
+    console.log("It worked");
+    branches.push({name, latitude, longitude});
+    console.log('b3', branches);
+    console.log('state', state)
+    setState(branches);
+    console.log('b2', state.branches);
+  }
+
   return (
     <main>
       <section>
         <BranchList
-        branches={branches}/>
+          branches={branches}/>
+        <Button
+          text="Create"
+          type="submit"
+        />
+        <Create
+          onSubmit={onSubmit}
+        />
       </section> 
       <section>
     <div className="App">
