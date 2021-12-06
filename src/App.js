@@ -70,8 +70,8 @@ function App() {
   )
 
   return (
-    <main>
-      <section>
+    <main className="layout">
+      <section className="sidebar">
         <BranchList
           branches={branches}
           onDelete={onDelete}
@@ -84,7 +84,7 @@ function App() {
           onSubmit={onSubmit}
         />
       </section> 
-      <section>
+      <section className="map">
     <div className="App">
       <header className="App-header">
         <LoadScript

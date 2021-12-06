@@ -36,3 +36,21 @@
     transform: rotate(360deg);
   }
 }
+
+.sidebar {
+  background-color: "white";
+  box-shadow: 0px 4px 8px;
+  display: flex;
+  flex-direction: column;
+  min-width: 18rem;
+  padding: 0;
+}
+
+.map {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin: 2rem 0;
+  padding: 0;
+  width: 100%;
+}
