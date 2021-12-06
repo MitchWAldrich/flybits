@@ -37,6 +37,10 @@
   }
 }
 
+.img {
+  height: 10vmin;
+}
+
 .sidebar {
   background-color: "white";
   box-shadow: 0px 4px 8px;
