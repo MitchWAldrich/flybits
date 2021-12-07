@@ -4,7 +4,7 @@ import Button from "./Button";
 import { getBranchById } from "../helpers/selectors";
 
 export default function NewPromotion(props) {
-  const { offerSubmit, branches, id } = props;
+  const { offerSubmit, branches, id, user } = props;
   const [promoOffer, setPromoOffer] = useState("");
   const [promoPhoto, setPromoPhoto] = useState("");
 
