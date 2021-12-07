@@ -29,3 +29,12 @@ export function getBranchById(branches, id) {
     }
   }
 }
+
+export function getBranchByCoords(branches, latitude, longitude) {
+  for (let branch of branches) {
+    console.log("latbranch", branch)
+    if (branch.lat === latitude && branch.lng === longitude) {
+      return branch
+    }
+  }
+}
