@@ -5,24 +5,17 @@ export default function BranchList(props) {
   const { branches, onDelete, user } = props;
 
   const parsedBranches = branches.map(data =>
-    <>
     <BranchListItem
-    key={data.id}
-    id={data.id}
-    name={data.name}
-    promo={data.promoOffer}
-    photo={data.promoPhoto}
-    onClick={onDelete}
-    branches={branches}
-    user={user}
-    />
-    {/* <NewPromotion
-      offerSubmit={offerSubmit}
-      branches={branches}
+      key={data.id}
       id={data.id}
-      /> */}
-      </>
-    )
+      name={data.name}
+      promo={data.promoOffer}
+      photo={data.promoPhoto}
+      onClick={onDelete}
+      branches={branches}
+      user={user}
+    />
+  )
 
   return (
     <ul>

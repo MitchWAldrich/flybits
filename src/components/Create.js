@@ -13,37 +13,36 @@ export default function Create(props) {
   const handleSubmit = event => {
     event.preventDefault();
     onSubmit(name, latitude, longitude, promoOffer, promoPhoto);
-    console.log('submitted')
   }
 
   return (
     <main>
       <h2>New Branch</h2>
-    <form autoComplete="off" onSubmit={handleSubmit}>
-      <input
-        name="name"
-        type="text"
-        placeholder="Enter Branch Name"
-        value={name}
-        onChange={(event) => setName(event.target.value)}
-      />
-      <input
-        name="latitude"
-        type="number"
-        step="0.001"
-        placeholder="Enter Latitude"
-        value={latitude}
-        onChange={(event) => setLatitude(event.target.value)}
-      />
-      <input
-        name="longitude"
-        type="number"
-        step="0.001"
-        placeholder="Enter Longitude"
-        value={longitude}
-        onChange={(event) => setLongitude(event.target.value)}
-      />
-       <input
+      <form autoComplete="off" onSubmit={handleSubmit}>
+        <input
+          name="name"
+          type="text"
+          placeholder="Enter Branch Name"
+          value={name}
+          onChange={(event) => setName(event.target.value)}
+        />
+        <input
+          name="latitude"
+          type="number"
+          step="0.001"
+          placeholder="Enter Latitude"
+          value={latitude}
+          onChange={(event) => setLatitude(event.target.value)}
+        />
+        <input
+          name="longitude"
+          type="number"
+          step="0.001"
+          placeholder="Enter Longitude"
+          value={longitude}
+          onChange={(event) => setLongitude(event.target.value)}
+        />
+        <input
           name="offer"
           type="text"
           placeholder="Enter Offer (if applicable)"
@@ -57,11 +56,10 @@ export default function Create(props) {
           value={promoPhoto}
           onChange={(event) => setPromoPhoto(event.target.value)}
         />
-      <Button
-      text="Submit"
-      // onClick={onSubmit(name, latitude, longitude)}
-    />
-    </form>
+        <Button
+          text="Submit"
+        />
+      </form>
     </main>
   )
 }

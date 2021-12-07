@@ -9,42 +9,40 @@ export default function Promotion(props) {
 
   if (user === "Marketer") {
 
-  if (hasPromotion === "true") {
-    return (
-      <>
-        <img className="img" alt={promo} src={photo} />
-        {promo}
-      </>
-    )
-  }
+    if (hasPromotion === "true") {
+      return (
+        <>
+          <img className="img" alt={promo} src={photo} />
+          <h3>{promo}</h3>
+        </>
+      )
+    }
 
-  const onClick = event => {
-    event.preventDefault();
-    console.log('show form')
-    setPromoForm("true");
-    console.log('pform', promoForm)
-  }
+    const onClick = event => {
+      event.preventDefault();
+      setPromoForm("true");
+    }
 
-  if (promoForm === "true") {
-    return (
-      <NewPromotion
-        offerSubmit={offerSubmit}
-        branches={branches}
-        id={id}
+    if (promoForm === "true") {
+      return (
+        <NewPromotion
+          offerSubmit={offerSubmit}
+          branches={branches}
+          id={id}
         />
-    )
-  }
+      )
+    }
 
-  if (promoForm === "false") {
+    if (promoForm === "false") {
 
-  return (
-    <Button
-    text="Add Promotion"
-    type="submit"
-    onClick={onClick}
-    />
-  )
-  }
+      return (
+        <Button
+          text="Add Promotion"
+          type="submit"
+          onClick={onClick}
+        />
+      )
+    }
   }
 
   if (user === "End User") {

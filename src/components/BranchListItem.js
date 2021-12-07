@@ -18,29 +18,8 @@ export default function BranchListItem(props) {
 
   if (user === "Marketer") {
 
-  return (
-    <li className="branch">
-      <h2>{name}</h2>
-      <Promotion
-        photo={photo}
-        promo={promo}
-        hasPromotion={hasPromotion(getBranchById(branches, id))}
-        offerSubmit={offerSubmit}
-        branches={branches}
-        id={id}
-        user={user}
-        />
-      <Button
-        text="Delete"
-        onClick={handleDelete}
-      />
-    </li>
-  )
-  }
-
-  if (user === "End User") {
     return (
-      <li>
+      <li className="branch">
         <h2>{name}</h2>
         <Promotion
           photo={photo}
@@ -50,7 +29,28 @@ export default function BranchListItem(props) {
           branches={branches}
           id={id}
           user={user}
-          />
+        />
+        <Button
+          text="Delete"
+          onClick={handleDelete}
+        />
+      </li>
+    )
+  }
+
+  if (user === "End User") {
+    return (
+      <li className="branch">
+        <h2>{name}</h2>
+        <Promotion
+          photo={photo}
+          promo={promo}
+          hasPromotion={hasPromotion(getBranchById(branches, id))}
+          offerSubmit={offerSubmit}
+          branches={branches}
+          id={id}
+          user={user}
+        />
       </li>
     )
   }

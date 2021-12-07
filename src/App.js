@@ -11,8 +11,8 @@ import { newId } from './helpers/newId';
 import { getBranchByCoords } from './helpers/selectors';
 
 const containerStyle = {
-  width: '400px',
-  height: '400px'
+  height: '40vw',
+  width: '140vh'
 };
 
 const center = {
@@ -107,8 +107,7 @@ function App() {
 
   const onLocation = (latitude, longitude) => {
     const branch = getBranchByCoords(branches, Number(latitude), Number(longitude));
-    console.log('onlocbra', branch, typeof latitude, typeof longitude)
-    recentVisits.push({ id: branch.id, name: branch.name, lat: Number(latitude), lng: Number(longitude), promoOffer: branch.promoOffer, promoPhoto: branch.promoPhoto});
+    recentVisits.push({ id: branch.id, name: branch.name, lat: Number(latitude), lng: Number(longitude), promoOffer: branch.promoOffer, promoPhoto: branch.promoPhoto });
     setLocation("false")
   }
 
@@ -124,8 +123,6 @@ function App() {
   }
 
   const offerSubmit = (branch, promoOffer, promoPhoto) => {
-    // const branch = getBranchById(branches, id);
-    console.log(branch)
     branch.promoOffer = promoOffer;
     branch.promoPhoto = promoPhoto;
     setState(branches)
@@ -154,8 +151,8 @@ function App() {
           <section className="sidebar">
             <h2>User: Marketer</h2>
             <Button
-            text="Toggle User"
-            onClick={toggleUser}
+              text="Toggle User"
+              onClick={toggleUser}
             />
             <BranchList
               branches={branches}
@@ -164,7 +161,7 @@ function App() {
               user={user}
             />
             <Button
-              text="Create"
+              text="Add Branch"
               type="submit"
               onClick={onCreate}
             />
@@ -183,7 +180,6 @@ function App() {
                   >
                     {markers}
 
-                    { /* Child components, such as markers, info windows, etc. */}
                     <></>
                   </GoogleMap>
                 </LoadScript>
@@ -199,7 +195,11 @@ function App() {
       return (
         <main className="layout">
           <section className="sidebar">
-          <h2>User: Marketer</h2>
+            <h2>User: Marketer</h2>
+            <Button
+              text="Toggle User"
+              onClick={toggleUser}
+            />
             <BranchList
               branches={branches}
               onDelete={onDelete}
@@ -243,8 +243,8 @@ function App() {
           <section className="sidebar">
             <h2>User: End User</h2>
             <Button
-            text="Toggle User"
-            onClick={toggleUser}
+              text="Toggle User"
+              onClick={toggleUser}
             />
             <h2>List of Offer(s):</h2>
             <BranchList
@@ -283,49 +283,53 @@ function App() {
         </main>
       );
     }
-    }
+  }
 
-    if (location === "true") {
+  if (location === "true") {
 
-      return (
-        <main className="layout">
-          <section className="sidebar">
+    return (
+      <main className="layout">
+        <section className="sidebar">
           <h2>User: End User</h2>
-            <BranchList
-              branches={recentVisits}
-              onDelete={onDelete}
-              offerSubmit={offerSubmit}
-              user={user}
-            />
-            <Location
-              onLocation={onLocation}
-            />
-          </section>
-          <section className="map">
-            <div className="App">
-              <header className="App-header">
-                <LoadScript
-                  googleMapsApiKey=""
+          <Button
+            text="Toggle User"
+            onClick={toggleUser}
+          />
+          <BranchList
+            branches={recentVisits}
+            onDelete={onDelete}
+            offerSubmit={offerSubmit}
+            user={user}
+          />
+          <Location
+            onLocation={onLocation}
+          />
+        </section>
+        <section className="map">
+          <div className="App">
+            <header className="App-header">
+              <LoadScript
+                googleMapsApiKey=""
+              >
+                <GoogleMap
+                  id="marker-example"
+                  mapContainerStyle={containerStyle}
+                  center={center}
+                  zoom={10}
                 >
-                  <GoogleMap
-                    id="marker-example"
-                    mapContainerStyle={containerStyle}
-                    center={center}
-                    zoom={10}
-                  >
-                    {markers}
+                  {markers}
 
-                    { /* Child components, such as markers, info windows, etc. */}
-                    <></>
-                  </GoogleMap>
-                </LoadScript>
-              </header>
-            </div>
-          </section>
-        </main>
-      );
-    }
-  
+                  { /* Child components, such as markers, info windows, etc. */}
+                  <></>
+                </GoogleMap>
+              </LoadScript>
+            </header>
+          </div>
+        </section>
+      </main>
+    );
+  }
+
 }
 
 export default React.memo(App);
