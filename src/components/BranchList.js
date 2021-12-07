@@ -1,9 +1,8 @@
 import React from "react";
 import BranchListItem from "./BranchListItem";
-import NewPromotion from "./NewPromotion";
 
 export default function BranchList(props) {
-  const { branches, onDelete, offerSubmit } = props;
+  const { branches, onDelete, user } = props;
 
   const parsedBranches = branches.map(data =>
     <>
@@ -15,6 +14,7 @@ export default function BranchList(props) {
     photo={data.promoPhoto}
     onClick={onDelete}
     branches={branches}
+    user={user}
     />
     {/* <NewPromotion
       offerSubmit={offerSubmit}
