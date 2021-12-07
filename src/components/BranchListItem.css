@@ -5,5 +5,15 @@
   border-radius: 5px;
   margin-top: 5px;
   margin-bottom: 5px;
-  justify-content: center;
+  padding-bottom: 10px;
+  align-items: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  margin: 5px;
 }
